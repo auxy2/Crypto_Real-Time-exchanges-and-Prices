@@ -3,8 +3,7 @@ import {Grid, Autocomplete, TextField, Skeleton} from "@mui/material"
 
 const SelectCountry = (props) => {
     const {value, setValue, label} = props;
-    const [countriesData, error, loaded] = useCountries("https://restcountries.com/v3.1/all");
-    console.log(countriesData)
+    const [countriesData, error, loaded, currencies] = useCountries("https://restcountries.com/v3.1/all");
 
     if(loaded){
         return(
@@ -21,9 +20,15 @@ const SelectCountry = (props) => {
     
 
     const filteredData = countriesData.filter(countary => "currencies" in countary);
+    let newC = []
+    console.log("filteredData", filteredData)
+    console.log("currencies", currencies);
     const dataCountary = filteredData.map(countary => {
+        newC.push(Object.keys(countary.currencies)[0])
         return `${countary.flag} ${Object.keys(countary.currencies)[0]} ${countary.name.common}`
     })
+
+    console.log(newC)
 
     
 
