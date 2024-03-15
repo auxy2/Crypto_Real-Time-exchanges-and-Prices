@@ -5,12 +5,15 @@ export const CurrencyContext = createContext();
 const CurrencyProvider = ({ children }) => {
     const [fromCurrency, setFromCurrency] = useState("");
     const [toCurrency, setToCurrency] = useState("");
+    const [firstAmount, setFirstAmount] = useState(0)
     
     const value = {
         fromCurrency,
         setFromCurrency,
         toCurrency,
-        setToCurrency
+        setToCurrency,
+        firstAmount,
+        setFirstAmount
     };
 
     return (
