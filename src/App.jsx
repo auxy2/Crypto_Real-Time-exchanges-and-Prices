@@ -3,7 +3,9 @@ import InputeAmount from "./components/InputeAmount"
 import SelectCountary from "./components/SelectCountary"
 import SwitchCurrency from "./components/SwitchCurrency"
 import { useContext, useEffect, useState} from "react"
-import CurrencyContext from "./contxt/currencyContex"
+// import {CurrencyContext} from "./contxt/currencyContex"
+import { CurrencyContext } from "./contxt/currencyContex"
+
 import axios from "axios"
 
 
@@ -36,7 +38,11 @@ function App() {
       .then(response => setResultCurency(response.data.data[codeToCurrency]))
     }
 
-  }, [firstAmount, fromCurrency, toCurrency])
+  }, [firstAmount, 
+    fromCurrency, 
+    toCurrency, 
+    codeFromCurrency, 
+    codeToCurrency])
 
   const StyleBox = {
     background: "#fdfdfd",
@@ -71,6 +77,7 @@ function App() {
         </Box>
       ))
     </Container>
+
   );
 }
 
