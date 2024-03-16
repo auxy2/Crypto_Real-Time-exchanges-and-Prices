@@ -19,17 +19,12 @@ const SelectCountry = (props) => {
     
     
 
-    const filteredData = countriesData.filter(countary => "currencies" in countary);
-    let newC = []
-    console.log("filteredData", filteredData)
-    console.log("currencies", currencies);
+    const filteredData = countriesData.filter(countary => {
+       return  "currencies" in countary && currencies.includes(Object.keys(countary.currencies)[0])
+     } );
     const dataCountary = filteredData.map(countary => {
-        newC.push(Object.keys(countary.currencies)[0])
         return `${countary.flag} ${Object.keys(countary.currencies)[0]} ${countary.name.common}`
     })
-
-    console.log(newC)
-
     
 
     return (
