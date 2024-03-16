@@ -6,6 +6,7 @@ import {useContext, useEffect, useState} from "react"
 import { CurrencyContext } from "./contxt/currencyContex"
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import  axios  from "axios"
+import CryptoPrice from "./components/CryptoPrices"
 
 function App() {
 
@@ -23,7 +24,11 @@ function App() {
   const codeFromCurrency = fromCurrency.split(" ")[1];
   const codeToCurrency = toCurrency.split(" ")[1];
 
-  console.log(resultCurrncy)
+  const handleClick = () => {
+    const handleClick = () => {
+      setOpen(!open);
+    };
+  }
 
   useEffect(() => {
     if(firstAmount){
@@ -66,7 +71,10 @@ function App() {
         <SelectCountary value={toCurrency} setValue={setToCurrency} label="To" />
       </Grid>
         <Grid item={12} md="auto" sx={{textAlign:"right", marginTop: "2rem", fontSize:"5px"}}>
-            <Button >
+            <Button onClick={handleClick} sx={{
+              borderRadius: "2",
+              height: "%100"
+            }}>
             View Crypto Rates
             </Button>
         </Grid>
@@ -79,6 +87,7 @@ function App() {
           <Typography variant="h5" sx={{marginTop: "5px", fontWeight:"bold"}}> {(resultCurrncy*firstAmount).toLocaleString()} {codeToCurrency}</Typography>
         </Box>
       ): ""}
+
 
     </Container>
 
