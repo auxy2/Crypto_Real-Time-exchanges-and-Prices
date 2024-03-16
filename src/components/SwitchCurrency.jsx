@@ -10,11 +10,25 @@ const {
     fromCurrency, 
     setFromCurrency, 
     toCurrency, 
-    setToCurrency } = useContext(CurrencyContext);
+    setToCurrency,
+    usdtLabel,
+    setUsdtLabel,
+    fiatLabel,
+    setFiattLabel,
+    inputUsdtLabel,
+    setInputUsdtLabel,
+    inputFiatLabel,
+    setInputFitLabel
+
+ } = useContext(CurrencyContext);
 
    const handleSwich = () => {
     setFromCurrency(toCurrency)
     setToCurrency(fromCurrency)
+    setUsdtLabel(fiatLabel)
+    setFiattLabel(usdtLabel)
+    setInputUsdtLabel(inputFiatLabel)
+    setInputFitLabel(inputUsdtLabel)
    }
     return(
         <Grid item xs={12} md="auto">

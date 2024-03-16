@@ -17,7 +17,11 @@ function App() {
     toCurrency, 
     setToCurrency,  
     firstAmount,
-    setFirstAmount
+    setFirstAmount,
+    usdtLabel,
+    setUsdtLabel,
+    fiatLabel,
+    setFiattLabel
   } = useContext(CurrencyContext);
 
   const [resultCurrncy, setResultCurrency] = useState(0)
@@ -66,21 +70,18 @@ function App() {
       <Typography variant="h5" sx={{ marginBottom: "2rem" }}>Stay Ahead with Accurate Conversions</Typography>
       <Grid container spacing={2}>
         <InputeAmount />
-        <SelectCountary value={fromCurrency} setValue={setFromCurrency} label="Fiat" />
+        <SelectCountary value={fromCurrency} setValue={setFromCurrency} label={fiatLabel} />
         <SwitchCurrency />
-        <SelectCountary value={toCurrency} setValue={setToCurrency} label="USDT" />
+        <SelectCountary value={toCurrency} setValue={setToCurrency} label={usdtLabel} />
       </Grid>
-        <Grid item={12} md="auto" sx={{textAlign:"right", marginTop: "2rem", fontSize:"5px"}}>
-            <Button onClick={handleClick} sx={{
-              borderRadius: "2",
-              height: "%100"
-            }}>
-            View Crypto Rates
-            </Button>
-        </Grid>
+            <Box sx={{textAlign: "right", marginTop: "2rem", fontSize:"5px", marginRight: "5rem"}}>
+            <Typography>Balance</Typography>
+            <Typography variant="h5" sx={{marginTop: "5px", fontWeight:"bold"}}>{"$"} {"20,000"} </Typography>
+
+            </Box>
       {firstAmount?(
-        <Box sx={{textAlign: "left", marginTop: "1rem", fontSize:"5px"}}>
-          <Typography> {console.log("local", parseInt(firstAmount).toLocaleString())} {parseFloat(firstAmount).toLocaleString()}  {codeFromCurrency} </Typography>
+        <Box sx={{textAlign: "left", marginTop:"-4.5rem", fontSize:"5px"}}>
+          <Typography> { parseInt(firstAmount).toLocaleString()}  {codeFromCurrency} </Typography>
           <Grid item xs={50} >
             <CurrencyExchangeIcon sx={{fontSize: 30}}/>
           </Grid>

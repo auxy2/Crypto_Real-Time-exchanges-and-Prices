@@ -1,20 +1,23 @@
-import {Grid, TextField, InputAdornment } from "@mui/material"
+import {Grid, TextField } from "@mui/material"
 import { CurrencyContext } from "../contxt/currencyContex"
 import { useContext } from "react"
 
 
 const InputeAmount = () => {
-    const {firstAmount, setFirstAmount} = useContext(CurrencyContext)
+    const {
+        firstAmount, 
+        setFirstAmount,
+    } = useContext(CurrencyContext)
     return (
         <Grid item xs={12} md>
             <TextField 
             value={firstAmount}
             onChange={e => setFirstAmount(e.target.value)}
-            label="Fiat Amount"
+            label= "Fiat/USDT Amount"
             fullWidth
             InputProps={{
                 type: "number",
-                startAdornment: <InputAdornment position="start">$</InputAdornment>
+                // startAdornment: <InputAdornment position="start">$</InputAdornment>
             }}
             >   
             </TextField>
