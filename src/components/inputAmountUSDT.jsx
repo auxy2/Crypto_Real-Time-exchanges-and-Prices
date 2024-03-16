@@ -10,7 +10,7 @@ const InputeAmount = () => {
             <TextField 
             value={firstAmount}
             onChange={e => setFirstAmount(e.target.value)}
-            label="Fiat Amount"
+            label="USDT Amount"
             fullWidth
             InputProps={{
                 type: "number",

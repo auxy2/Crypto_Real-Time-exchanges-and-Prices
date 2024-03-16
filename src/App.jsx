@@ -66,9 +66,9 @@ function App() {
       <Typography variant="h5" sx={{ marginBottom: "2rem" }}>Stay Ahead with Accurate Conversions</Typography>
       <Grid container spacing={2}>
         <InputeAmount />
-        <SelectCountary value={fromCurrency} setValue={setFromCurrency} label="From" />
+        <SelectCountary value={fromCurrency} setValue={setFromCurrency} label="Fiat" />
         <SwitchCurrency />
-        <SelectCountary value={toCurrency} setValue={setToCurrency} label="To" />
+        <SelectCountary value={toCurrency} setValue={setToCurrency} label="USDT" />
       </Grid>
         <Grid item={12} md="auto" sx={{textAlign:"right", marginTop: "2rem", fontSize:"5px"}}>
             <Button onClick={handleClick} sx={{

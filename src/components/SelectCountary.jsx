@@ -23,7 +23,9 @@ const SelectCountry = (props) => {
        return  "currencies" in countary && currencies.includes(Object.keys(countary.currencies)[0])
      } );
     const dataCountary = filteredData.map(countary => {
-        return `${countary.flag} ${Object.keys(countary.currencies)[0]} ${countary.name.common}`
+        // return `${countary.flag} ${Object.keys(countary.currencies)[0]} ${countary.name.common}`
+        return `${Object.keys(countary.currencies)[0]}`
+
     })
     
 
