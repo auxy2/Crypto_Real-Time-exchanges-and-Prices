@@ -1,15 +1,25 @@
 import { createContext, useState } from "react";
+import useCountries from "../hooks/Apis";
 
 export const CurrencyContext = createContext();
 
 const CurrencyProvider = ({ children }) => {
-    const [fromCurrency, setFromCurrency] = useState("🇺🇸 USD United States");
-    const [toCurrency, setToCurrency] = useState("🇨🇦 CAD Canada");
+
+
+    const [fromCurrency, setFromCurrency] = useState("USDT");
+    const [toCurrency, setToCurrency] = useState("CAD");
     const [firstAmount, setFirstAmount] = useState(0);
     const [usdtLabel, setUsdtLabel] = useState("USDT")
     const [fiatLabel, setFiattLabel] = useState("Fiat")
     const [inputUsdtLabel, setInputUsdtLabel] = useState("USDT Amount")
     const [inputFiatLabel, setInputFitLabel] = useState("Fiat Amount")
+    const [usdtCurr, setUsdtCurr] = useState(["USDT"])
+    const [newCurrencies, setNewCurrencies] = useState([])
+
+
+    // console.log("currencies", newCurrencies)
+
+
     
     const value = {
         fromCurrency,
@@ -25,7 +35,11 @@ const CurrencyProvider = ({ children }) => {
         inputUsdtLabel,
         setInputUsdtLabel,
         inputFiatLabel,
-        setInputFitLabel
+        setInputFitLabel,
+        usdtCurr,
+        setUsdtCurr,
+        newCurrencies,
+        setNewCurrencies
     };
 
     return (

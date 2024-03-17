@@ -24,7 +24,7 @@ export const useCountries = (url) => {
             }
         };
         
-        fetchData(); // Call the fetchData function to initiate the API call
+        fetchData(); 
     }, [url]);
 
     return [countriesData, error, loaded, currencies];

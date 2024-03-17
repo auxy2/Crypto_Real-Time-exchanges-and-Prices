@@ -2,6 +2,7 @@ import {Container, Typography, Grid, Box, Button} from "@mui/material"
 import InputeAmount from "./components/InputeAmount"
 import SelectCountary from "./components/SelectCountary"
 import SwitchCurrency from "./components/SwitchCurrency"
+import SelectUSDT from "./components/USDT"
 import {useContext, useEffect, useState} from "react"
 import { CurrencyContext } from "./contxt/currencyContex"
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
@@ -25,14 +26,10 @@ function App() {
   } = useContext(CurrencyContext);
 
   const [resultCurrncy, setResultCurrency] = useState(0)
-  const codeFromCurrency = fromCurrency.split(" ")[1];
-  const codeToCurrency = toCurrency.split(" ")[1];
+  const codeFromCurrency = fromCurrency;
+  const codeToCurrency = toCurrency;
 
-  const handleClick = () => {
-    const handleClick = () => {
-      setOpen(!open);
-    };
-  }
+
 
   useEffect(() => {
     if(firstAmount){
@@ -70,9 +67,9 @@ function App() {
       <Typography variant="h5" sx={{ marginBottom: "2rem" }}>Stay Ahead with Accurate Conversions</Typography>
       <Grid container spacing={2}>
         <InputeAmount />
-        <SelectCountary value={fromCurrency} setValue={setFromCurrency} label={fiatLabel} />
+        <SelectUSDT value={fromCurrency} setValue={setFromCurrency} label={ usdtLabel} />
         <SwitchCurrency />
-        <SelectCountary value={toCurrency} setValue={setToCurrency} label={usdtLabel} />
+        <SelectCountary value={toCurrency} setValue={setToCurrency} label={fiatLabel}/>
       </Grid>
             <Box sx={{textAlign: "right", marginTop: "2rem", fontSize:"5px", marginRight: "5rem"}}>
             <Typography>Balance</Typography>
