@@ -3,10 +3,10 @@ import {  useContext } from "react"
 // import  compare from "../17139671571638266564-128.png"
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import  { CurrencyContext } from "../contxt/currencyContex";
-import useCountries from "../hooks/Apis";
+
+
 
 const SwitchCurrency = () => {
-
 
 const { 
     fromCurrency, 
@@ -23,10 +23,12 @@ const {
     setInputFitLabel,
     usdtCurr,
     setUsdtCurr,
-    newCurrencies,
-    setNewCurrencies
+    currencies,
+    setCurrencies
+    
  } = useContext(CurrencyContext);
 
+ 
    const handleSwich = () => {
     setFromCurrency(toCurrency)
     setToCurrency(fromCurrency)
@@ -34,8 +36,8 @@ const {
     setFiattLabel(usdtLabel)
     setInputUsdtLabel(inputFiatLabel)
     setInputFitLabel(inputUsdtLabel)
-    setUsdtCurr(newCurrencies),
-    setNewCurrencies(usdtCurr)
+    setUsdtCurr(currencies),
+    setCurrencies(usdtCurr)
    }
     return(
         <Grid item xs={12} md="auto">

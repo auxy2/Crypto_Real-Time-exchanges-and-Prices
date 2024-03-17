@@ -11,7 +11,6 @@ import CryptoPrice from "./components/CryptoPrices"
 
 function App() {
 
-
   const { 
     fromCurrency, 
     setFromCurrency, 
@@ -26,24 +25,49 @@ function App() {
   } = useContext(CurrencyContext);
 
   const [resultCurrncy, setResultCurrency] = useState(0)
+  const [balanceCurrency , setBalanceCurrency] = useState(0)
   const codeFromCurrency = fromCurrency;
   const codeToCurrency = toCurrency;
 
 
 
+
+
   useEffect(() => {
-    if(firstAmount){
-      axios("https://api.freecurrencyapi.com/v1/latest",
-      {
-        params: {
-          apikey: "fca_live_QcW6Nlztsxwl21QwMwMIhm8rbQLw8DoHSCtKiX5y",
-          base_currency: codeFromCurrency,
-          currencies: codeToCurrency
+
+    console.log("fromCurrency", fromCurrency, "toCurrency", toCurrency, "firstAmount", firstAmount)
+    if(firstAmount && fromCurrency !== "USDT"){
+      const body = {
+        currency: fromCurrency,
+        fiatAmount: firstAmount
       }
-    }
-    )
-    .then(response => setResultCurrency(response.data.data[codeToCurrency]))
-    .catch(error => setResultCurrency(0.00))
+      axios.post("http://127.0.0.1:3000/api/V1/test/ConvertToUsdt", body)
+      .then(res => {
+        const balance = parseFloat(res.data.newbalance).toLocaleString()
+        const rate = parseFloat(res.data.rate).toLocaleString()
+        setBalanceCurrency(balance)
+        setResultCurrency(rate)
+          }
+      )
+    // .then(response => setResultCurrency(response.data.data[codeToCurrency]))
+    .catch(error => setResultCurrency(0))
+
+    }else{
+      console.log("fromCurrency", fromCurrency, "toCurrency", toCurrency, "firstAmount", firstAmount)
+      const body = {
+        currency: toCurrency,
+        USDTAmount: firstAmount
+      }
+      axios.post("http://127.0.0.1:3000/api/V1/test/CovertFromUsdt", body)
+      .then(res => {
+        const balance = parseFloat(res.data.newbalance).toLocaleString()
+        const rate = parseFloat(res.data.rate).toLocaleString()
+        setBalanceCurrency(balance)
+        setResultCurrency(rate)
+          }
+      )
+    // .then(response => setResultCurrency(response.data.data[codeToCurrency]))
+    .catch(error => setResultCurrency(0))
 
     }
 
@@ -67,18 +91,21 @@ function App() {
       <Typography variant="h5" sx={{ marginBottom: "2rem" }}>Stay Ahead with Accurate Conversions</Typography>
       <Grid container spacing={2}>
         <InputeAmount />
-        <SelectUSDT value={fromCurrency} setValue={setFromCurrency} label={ usdtLabel} />
+        <SelectUSDT value={fromCurrency} setValue={setFromCurrency} label= { usdtLabel} />
+        {/* <Box sx={{textAlign: "left", marginTop:"0rem", fontSize:"5px", marginRight:"-5rem"}}>
+          <Typography >switch</Typography>
+        </Box> */}
         <SwitchCurrency />
         <SelectCountary value={toCurrency} setValue={setToCurrency} label={fiatLabel}/>
       </Grid>
             <Box sx={{textAlign: "right", marginTop: "2rem", fontSize:"5px", marginRight: "5rem"}}>
             <Typography>Balance</Typography>
-            <Typography variant="h5" sx={{marginTop: "5px", fontWeight:"bold"}}>{"$"} {"20,000"} </Typography>
+            <Typography variant="h5" sx={{marginTop: "5px", fontWeight:"bold"}}>{"$"} {balanceCurrency} </Typography>
 
             </Box>
       {firstAmount?(
         <Box sx={{textAlign: "left", marginTop:"-4.5rem", fontSize:"5px"}}>
-          <Typography> { parseInt(firstAmount).toLocaleString()}  {codeFromCurrency} </Typography>
+          <Typography> { parseInt(firstAmount).toLocaleString()}  {codeFromCurrency.toLocaleString()} </Typography>
           <Grid item xs={50} >
             <CurrencyExchangeIcon sx={{fontSize: 30}}/>
           </Grid>

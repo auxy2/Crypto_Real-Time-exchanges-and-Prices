@@ -1,15 +1,22 @@
-import { useCountries } from "../hooks/Apis"; 
 import { CurrencyContext } from "../contxt/currencyContex"
 import {Grid, Autocomplete, TextField, Skeleton} from "@mui/material"
 import { useContext } from "react";
 
+
 const SelectCountry = (props) => {
+
     const {value, setValue, label} = props;
-    const [countriesData, error, loaded, currencies] = useCountries("https://restcountries.com/v3.1/all");
-    console.log("SelectCountry", currencies, )
+
+
     const {
         newCurrencies, 
-        setNewCurrencies,
+        setNewCurrencies,        
+        error,
+        setError,
+        loaded,
+        setLoaded,
+        currencies,
+        setCurrencies
      } = useContext(CurrencyContext);
 
     if(loaded){
@@ -44,7 +51,7 @@ const SelectCountry = (props) => {
                 onChange={(event, newValue) => {
                     setValue(newValue)
                 }}
-                options={newCurrencies}
+                options={currencies}
                 renderInput={(params) => <TextField {...params} label={label}
                 />}
             />
