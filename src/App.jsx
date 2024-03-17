@@ -92,9 +92,6 @@ function App() {
       <Grid container spacing={2}>
         <InputeAmount />
         <SelectUSDT value={fromCurrency} setValue={setFromCurrency} label= { usdtLabel} />
-        {/* <Box sx={{textAlign: "left", marginTop:"0rem", fontSize:"5px", marginRight:"-5rem"}}>
-          <Typography >switch</Typography>
-        </Box> */}
         <SwitchCurrency />
         <SelectCountary value={toCurrency} setValue={setToCurrency} label={fiatLabel}/>
       </Grid>
@@ -109,7 +106,7 @@ function App() {
           <Grid item xs={50} >
             <CurrencyExchangeIcon sx={{fontSize: 30}}/>
           </Grid>
-          <Typography variant="h5" sx={{marginTop: "5px", fontWeight:"bold"}}> {(resultCurrncy*firstAmount).toLocaleString()} {codeToCurrency}</Typography>
+          <Typography variant="h5" sx={{marginTop: "5px", fontWeight:"bold"}}> {(resultCurrncy).toLocaleString()} {codeToCurrency}</Typography>
         </Box>
       ): ""}
 
