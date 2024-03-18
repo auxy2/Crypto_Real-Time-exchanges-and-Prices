@@ -19,7 +19,7 @@ const CurrencyProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [loaded, setLoaded] = useState(false);
     const [currencies, setCurrencies] = useState([])
-    const [formerBalance, setFormerBalance] = useState(0)
+    const [formerBalance, setFormerBalance] = useState()
 
 
     useEffect(() => {

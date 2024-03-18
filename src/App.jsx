@@ -27,7 +27,7 @@ function App() {
   } = useContext(CurrencyContext);
 
   const [resultCurrncy, setResultCurrency] = useState(0)
-  const [balanceCurrency , setBalanceCurrency] = useState(formerBalance)
+  const [balanceCurrency , setBalanceCurrency] = useState(0)
   const codeFromCurrency = fromCurrency;
   const codeToCurrency = toCurrency;
 
@@ -112,7 +112,14 @@ function App() {
             })
             .catch(error => setResultCurrency(0));
         }
-      }, 650); // Adjust the debounce timeout as needed
+      }, 650); 
+
+      const fetchData = async() => {
+        const oldBalance = await axios.get("https://cyan-frantic-deer.cyclic.app/api/V1/test/balance");
+                const balance = parseFloat(oldBalance.data.balance.balance).toLocaleString()
+                setBalanceCurrency(balance)
+      }
+      fetchData()
   
       // Cleanup function to clear the timeout if component unmounts or firstAmount changes
       return () => clearTimeout(debounceTimeout);
