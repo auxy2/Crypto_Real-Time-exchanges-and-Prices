@@ -65,8 +65,8 @@ function App() {
 
       const fetchData = async() => {
         const oldBalance = await axios.get("https://cyan-frantic-deer.cyclic.app/api/V1/test/balance");
-                const balance = parseFloat(oldBalance.data.balance.balance).toLocaleString()
-                setBalanceCurrency(balance)
+                const balance = parseFloat(oldBalance.data.balance).toLocaleString()
+                setBalanceCurrency(parseFloat(balance))
       }
       fetchData()
   
