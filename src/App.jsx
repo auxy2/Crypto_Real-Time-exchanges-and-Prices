@@ -39,7 +39,7 @@ function App() {
             currency: fromCurrency,
             fiatAmount: firstAmount
           };
-          axios.post("https://cyan-frantic-deer.cyclic.app/api/V1/test/ConvertToUsdt", body)
+          axios.post("http://127.0.0.1:3000/api/V1/test/ConvertToUsdt", body)
             .then(res => {
               const balance = parseFloat(res.data.newbalance).toLocaleString();
               const rate = parseFloat(res.data.rate).toLocaleString();
@@ -52,11 +52,11 @@ function App() {
             currency: toCurrency,
             USDTAmount: firstAmount
           };
-          axios.post("https://cyan-frantic-deer.cyclic.app/api/V1/test/CovertFromUsdt", body)
+          axios.post("http://127.0.0.1:3000/api/V1/test/CovertFromUsdt", body)
             .then(res => {
               const balance = parseFloat(res.data.newbalance).toLocaleString();
               const rate = parseFloat(res.data.rate).toLocaleString();
-              setBalanceCurrency(balance);
+              setBalanceCurrency("balance", res.data);
               setResultCurrency(rate);
             })
             .catch(error => setResultCurrency(0));
@@ -64,7 +64,7 @@ function App() {
       }, 650); 
 
       const fetchData = async() => {
-        const oldBalance = await axios.get("https://cyan-frantic-deer.cyclic.app/api/V1/test/balance");
+        const oldBalance = await axios.get("http://127.0.0.1:3000/api/V1/test/balance");
                 const balance = parseFloat(oldBalance.data.balance).toLocaleString()
                 setBalanceCurrency(parseFloat(balance))
       }
@@ -89,7 +89,7 @@ function App() {
 
   return (
     <Container maxWidth="md" sx={StyleBox}>
-      <Typography variant="h5" sx={{ marginBottom: "2rem" }}>Stay Ahead with Accurate Conversions</Typography>
+      <Typography variant="h5" sx={{ marginBottom: "2rem" }}> Buy And Sell USDT </Typography>
       <Grid container spacing={2}>
         <InputeAmount />
         <SelectUSDT value={fromCurrency} setValue={setFromCurrency} label= { usdtLabel} />

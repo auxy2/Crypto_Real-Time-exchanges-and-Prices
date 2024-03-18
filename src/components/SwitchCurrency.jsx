@@ -24,16 +24,18 @@ const {
     usdtCurr,
     setUsdtCurr,
     currencies,
-    setCurrencies
+    setCurrencies,
+    buyUsdtLabel,
+    setBuyUsdtLabel
     
  } = useContext(CurrencyContext);
 
  
    const handleSwich = () => {
-    setFromCurrency(toCurrency)
-    setToCurrency(fromCurrency)
     setUsdtLabel(fiatLabel)
     setFiattLabel(usdtLabel)
+    setFromCurrency(toCurrency)
+    setToCurrency(fromCurrency)
     setInputUsdtLabel(inputFiatLabel)
     setInputFitLabel(inputUsdtLabel)
     setUsdtCurr(currencies),

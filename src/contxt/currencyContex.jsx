@@ -10,7 +10,8 @@ const CurrencyProvider = ({ children }) => {
     const [toCurrency, setToCurrency] = useState("CAD");
     const [firstAmount, setFirstAmount] = useState(0);
     const [usdtLabel, setUsdtLabel] = useState("USDT")
-    const [fiatLabel, setFiattLabel] = useState("Fiat")
+    const [buyUsdtLabel, setBuyUsdtLabel] = useState("Buy USDT")    
+    const [fiatLabel, setFiattLabel] = useState("Select Currency")
     const [inputUsdtLabel, setInputUsdtLabel] = useState("USDT Amount")
     const [inputFiatLabel, setInputFitLabel] = useState("Fiat Amount")
     const [usdtCurr, setUsdtCurr] = useState(["USDT"])
@@ -73,7 +74,8 @@ const CurrencyProvider = ({ children }) => {
         currencies,
         setCurrencies,
         formerBalance,
-        setFormerBalance
+        buyUsdtLabel,
+        setBuyUsdtLabel
     };
 
     return (
