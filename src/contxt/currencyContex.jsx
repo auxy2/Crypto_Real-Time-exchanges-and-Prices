@@ -19,6 +19,8 @@ const CurrencyProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [loaded, setLoaded] = useState(false);
     const [currencies, setCurrencies] = useState([])
+    const [formerBalance, setFormerBalance] = useState(0)
+
 
     useEffect(() => {
 
@@ -27,9 +29,9 @@ const CurrencyProvider = ({ children }) => {
             try {
                 setLoaded(true);
                 const availableCurrencies = await axios("https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_QcW6Nlztsxwl21QwMwMIhm8rbQLw8DoHSCtKiX5y")
-                // const olaBalance = await axios.get("http://127.0.0.1:3000/balance");
-                // console.log("olaBalance", olaBalance)
-
+                const oldBalance = await axios.get("https://cyan-frantic-deer.cyclic.app/api/V1/test/balance");
+                const balance = parseFloat(oldBalance.data.balance.balance).toLocaleString()
+                setFormerBalance(balance)
                 const currencies = Object.keys(availableCurrencies.data.data)
                 setCurrencies(currencies)
             } catch (error) {
@@ -69,7 +71,9 @@ const CurrencyProvider = ({ children }) => {
         loaded,
         setLoaded,
         currencies,
-        setCurrencies
+        setCurrencies,
+        formerBalance,
+        setFormerBalance
     };
 
     return (
