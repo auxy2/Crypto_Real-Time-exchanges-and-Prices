@@ -7,7 +7,6 @@ import {useContext, useEffect, useState} from "react"
 import { CurrencyContext } from "./contxt/currencyContex"
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import  axios  from "axios"
-import CryptoPrice from "./components/CryptoPrices"
 
 function App() {
 
