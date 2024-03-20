@@ -56,7 +56,7 @@ function App() {
             .then(res => {
               const balance = parseFloat(res.data.newbalance).toLocaleString();
               const rate = parseFloat(res.data.rate).toLocaleString();
-              setBalanceCurrency("balance", res.data);
+              setBalanceCurrency(balance);
               setResultCurrency(rate);
             })
             .catch(error => setResultCurrency(0));
