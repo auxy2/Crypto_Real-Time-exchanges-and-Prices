@@ -39,7 +39,7 @@ function App() {
             currency: fromCurrency,
             fiatAmount: firstAmount
           };
-          axios.post("http://127.0.0.1:3000/api/V1/test/ConvertToUsdt", body)
+          axios.post("https://cyan-frantic-deer.cyclic.app/api/V1/test/ConvertToUsdt", body)
             .then(res => {
               const balance = parseFloat(res.data.newbalance).toLocaleString();
               const rate = parseFloat(res.data.rate).toLocaleString();
@@ -52,7 +52,7 @@ function App() {
             currency: toCurrency,
             USDTAmount: firstAmount
           };
-          axios.post("http://127.0.0.1:3000/api/V1/test/CovertFromUsdt", body)
+          axios.post("https://cyan-frantic-deer.cyclic.app/api/V1/test/CovertFromUsdt", body)
             .then(res => {
               const balance = parseFloat(res.data.newbalance).toLocaleString();
               const rate = parseFloat(res.data.rate).toLocaleString();
@@ -64,7 +64,7 @@ function App() {
       }, 650); 
 
       const fetchData = async() => {
-        const oldBalance = await axios.get("http://127.0.0.1:3000/api/V1/test/balance");
+        const oldBalance = await axios.get("https://cyan-frantic-deer.cyclic.app/api/V1/test/balance");
                 const balance = parseFloat(oldBalance.data.balance).toLocaleString()
                 setBalanceCurrency(parseFloat(balance))
       }
