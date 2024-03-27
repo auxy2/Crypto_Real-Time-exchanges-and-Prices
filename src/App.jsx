@@ -142,17 +142,17 @@ export default function App() {
             defaultCurrencyCode="eth"
             visible
         />
-
-{/* <MoonPayBuyWidget
+{/* 
+<MoonPayBuyWidget
             variant="embedded"
             baseCurrencyCode="usd"
             baseCurrencyAmount="100"
             defaultCurrencyCode="eth"
             visible
         /> */}
-        <button onClick={() => setVisible(visible)}>
+        {/* <button onClick={() => setVisible(visible)}>
             Toggle widget
-        </button>
+        </button> */}
         </MoonPayProvider>
         
     )
